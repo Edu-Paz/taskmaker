@@ -7,7 +7,7 @@ module.exports = {
             const task = await Task.create(req.body);
             return res.status(201).json(task);
         } catch (error) {
-            return res.status(400).json({ error: "Erro ao criar tarefa." });
+            return res.status(400).json({ error: error.message});
         }
     },
 

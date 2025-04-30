@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 
+console.log('DB_USER:', process.env.DB_USER);
+
 const taskRoutes = require("./routes/taskRoutes");
 
 app.use(express.json());// Para aceitar JSON
