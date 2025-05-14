@@ -41,13 +41,22 @@ function TaskForm() {
                 value={task.description}
                 onChange={handleChange}
             />
-            <input
-                type="text"
+            <select
                 name="status"
-                placeholder="Status"
                 value={task.status}
                 onChange={handleChange}
-            />
+                required
+                onInvalid={(e) =>
+                    e.target.setCustomValidity(
+                        "Selecione um status."
+                    )
+                }
+                onInput={(e) => e.target.setCustomValidity("")}>
+                <option value="">Selecione o status</option>
+                <option value="pendente">Pendente</option>
+                <option value="em andamento">Em andamento</option>
+                <option value="concluido">Concluída</option>
+            </select>
             <button type="submit">Criar Tarefa</button>
         </form>
     );
