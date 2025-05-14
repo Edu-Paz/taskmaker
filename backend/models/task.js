@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Sequelize } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     class Task extends Model {
         /**
@@ -15,7 +15,11 @@ module.exports = (sequelize, DataTypes) => {
         {
             title: DataTypes.STRING,
             description: DataTypes.TEXT,
-            status: DataTypes.STRING,
+            status: {
+                type: Sequelize.ENUM("concluído", "pendente", "em andamento"),
+                allowNull: false,
+                defaultValue: "pendente",
+            },
         },
         {
             sequelize,
