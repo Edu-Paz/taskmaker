@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function TaskForm({ onTaskCreated }) {
+function TaskForm() {
     const [task, setTask] = useState({
         title: "",
         description: "",
@@ -18,7 +18,7 @@ function TaskForm({ onTaskCreated }) {
             await axios.post("http://localhost:3000/api/tasks", task);
             alert("Tarefa criada com sucesso!");
             setTask({ title: "", description: "", status: "" });
-            onTaskCreated();
+            window.location.reload();
         } catch (error) {
             console.error(error);
             alert("Erro ao criar tarefa.");
